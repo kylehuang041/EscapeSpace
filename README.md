@@ -10,7 +10,7 @@ a story to explain why you must do what you have to do.
 * The Witness - same as Myst, puzzles build in complexity
 * We Were Here - varied puzzles like this game
 
-Game Link: ...
+Game Link: https://kylehuang041.github.io/EscapeSpaceBuild/
 
 ## Group
 
