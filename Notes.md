@@ -1,8 +1,6 @@
 # Notes
 
-https://steamcommunity.com/profiles/76561198092649570/
-
-## Types of Games
+Types of Games
 
 Ideas:
     Managment games ++
