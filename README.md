@@ -14,7 +14,7 @@ Game Link: ...
 
 ## Group
 
-* Brody Soedel
+* rody Soedel
 * Kyle Huang
 * Gelzen Crisanto
 * Kuzey Gok
