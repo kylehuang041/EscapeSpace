@@ -7,21 +7,46 @@ public class PlayerMovement : MonoBehaviour
     private float horizontalInput;
     private float forwardInput;
     private float yaw = 0.0f;
+    private bool cursorLocked = true;
+
+
+    void Start() {
+        // Lock cursor to center of screen and hide it
+        Cursor.lockState = CursorLockMode.Locked;
+    }
 
     void Update()
     {
-        // Get player input
-        horizontalInput = Input.GetAxis("Horizontal");
-        forwardInput = Input.GetAxis("Vertical");
+        // Toggle cursor lock/unlock with the Escape key
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            cursorLocked = !cursorLocked;
+            Cursor.lockState = cursorLocked ? CursorLockMode.Locked : CursorLockMode.None;
+        }
 
-        // Move the vehicle forward/backward
-        transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
+        // If the cursor is locked, rotate the player based on mouse input
+        if (cursorLocked)
+        {
+            // Get player input
+            horizontalInput = Input.GetAxis("Horizontal");
+            forwardInput = Input.GetAxis("Vertical");
 
-        // Rotate the player based on mouse input
-        yaw += sensitivity * Input.GetAxis("Mouse X");
-        transform.eulerAngles = new Vector3(0.0f, yaw, 0.0f);
+            // Move the player forward/backward
+            transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
 
-        // Rotate left/right of vehicle
-        transform.Translate(Vector3.right * Time.deltaTime * horizontalInput);
+            // Rotate the player based on mouse input
+            yaw += sensitivity * Input.GetAxis("Mouse X");
+            transform.eulerAngles = new Vector3(0.0f, yaw, 0.0f);
+
+            // Rotate left/right of player
+            transform.Translate(Vector3.right * Time.deltaTime * speed * horizontalInput);
+        }
+        else
+        {
+            // Center the mouse cursor
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.lockState = CursorLockMode.Confined;
+        }
     }
 }
