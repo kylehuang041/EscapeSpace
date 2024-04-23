@@ -46,7 +46,6 @@ public class PlayerMovement : MonoBehaviour
             // Center the mouse cursor
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
-            Cursor.lockState = CursorLockMode.Confined;
         }
     }
 }
