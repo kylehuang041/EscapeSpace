@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
 
     // Crouching
     public float crouchHeight = 0.5f;
-    private float defaultHeight = 2.0f;
+    private float defaultHeight = 0.0f;
     private float crouchSpeed = 2.5f;
 
     void Start()
