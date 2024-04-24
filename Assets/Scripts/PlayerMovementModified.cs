@@ -8,7 +8,7 @@ public class PlayerMovementModified : MonoBehaviour
     private float forwardInput;
     private float yaw = 0.0f;
     private bool cursorLocked = true;
-
+    private bool isCrouch = false;
 
     void Start() {
         // Lock cursor to center of screen and hide it
@@ -46,6 +46,20 @@ public class PlayerMovementModified : MonoBehaviour
             // Center the mouse cursor
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
+        }
+        if(Input.GetKeyDown(KeyCode.C))
+        {
+            if(isCrouch)
+            {
+                transform.Translate(Vector3.up * 3);
+                speed *= 2;
+            }
+            else
+            {
+                transform.Translate(Vector3.down * 3);
+                speed /= 2;
+            }
+            isCrouch = !isCrouch;
         }
     }
 }
