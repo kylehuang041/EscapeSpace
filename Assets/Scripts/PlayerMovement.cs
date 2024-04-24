@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -6,11 +8,11 @@ public class PlayerMovement : MonoBehaviour
     public float sensitivity = 1.0f;
     private float horizontalInput;
     private float forwardInput;
-    private float yaw = 0.0f;
+    private float yawX = 0.0f;
     private bool cursorLocked = true;
 
-
-    void Start() {
+    void Start()
+    {
         // Lock cursor to center of screen and hide it
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -34,9 +36,9 @@ public class PlayerMovement : MonoBehaviour
             // Move the player forward/backward
             transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
 
-            // Rotate the player based on mouse input
-            yaw += sensitivity * Input.GetAxis("Mouse X");
-            transform.eulerAngles = new Vector3(0.0f, yaw, 0.0f);
+            // Rotate the player based on mouse input for yaw (left/right)
+            yawX += sensitivity * Input.GetAxis("Mouse X");
+            transform.eulerAngles = new Vector3(0.0f, yawX, 0.0f);
 
             // Rotate left/right of player
             transform.Translate(Vector3.right * Time.deltaTime * speed * horizontalInput);

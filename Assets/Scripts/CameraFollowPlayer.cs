@@ -1,23 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
     public GameObject player;
     private Vector3 offset = new Vector3(0, 2, 0);
+    private float sensitivity = 1.0f;
+    private float verticalRotation = 0.0f;
+    private float maxVerticalRotation = 90.0f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void LateUpdate()
     {
-        // Place the camera behind the player
+        // Update verticalRotation (up/down rotation) based on mouse input
+        verticalRotation -= Input.GetAxis("Mouse Y") * sensitivity;
+        verticalRotation = Mathf.Clamp(verticalRotation, -maxVerticalRotation, maxVerticalRotation); // Clamp verticalRotation angle
+
+        // Calculate rotation quaternion for vertical rotation only
+        Quaternion rotation = Quaternion.Euler(verticalRotation, player.transform.eulerAngles.y, 0);
+
+        // Set camera position and rotation relative to player
         transform.position = player.transform.position + offset;
-        transform.rotation = player.transform.rotation;
+        transform.rotation = rotation;
     }
 }
