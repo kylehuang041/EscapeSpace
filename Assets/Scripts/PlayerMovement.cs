@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private float horizontalInput;
     private float forwardInput;
     private float yawX = 0.0f;
+    private float yawY = 0.0f;
     private bool cursorLocked = true;
 
     // Crouching
@@ -47,7 +48,10 @@ public class PlayerMovement : MonoBehaviour
 
             // Rotate the player based on mouse input for yaw (left/right)
             yawX += sensitivity * Input.GetAxis("Mouse X");
-            transform.eulerAngles = new Vector3(0.0f, yawX, 0.0f);
+            // transform.eulerAngles = new Vector3(0.0f, yawX, 0.0f);
+            yawY += sensitivity * Input.GetAxis("Mouse Y");
+            transform.eulerAngles = new Vector3(yawY, yawX, 0.0f);
+
 
             // Rotate left/right of player
             float targetHeight = Input.GetKey(KeyCode.LeftControl) ? defaultHeight - crouchHeight : defaultHeight;
