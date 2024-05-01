@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Keypad
   - Inspectable
+  - SpaceShip
   layers:
   - Default
   - TransparentFX
