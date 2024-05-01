@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (PauseMenu.IsPaused()) return;
         // Toggle cursor lock/unlock with the Escape key
         if (Input.GetKeyDown(KeyCode.Escape))
         {

@@ -10,6 +10,7 @@ public class FollowPlayer : MonoBehaviour
 
     void LateUpdate()
     {
+        if (PauseMenu.IsPaused()) return;
         // Update verticalRotation (up/down rotation) based on mouse input
         verticalRotation -= Input.GetAxis("Mouse Y") * sensitivity;
         verticalRotation = Mathf.Clamp(verticalRotation, -maxVerticalRotation, maxVerticalRotation); // Clamp verticalRotation angle

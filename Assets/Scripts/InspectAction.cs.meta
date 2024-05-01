@@ -1,2 +1,13 @@
 fileFormatVersion: 2
 guid: 017d583e9f9e9994f8a08459144e901d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - inspectCamera: {instanceID: 0}
+  - inspectAxisPrefab: {fileID: 3482013922280705998, guid: 51997878a3d46f847bc1ee16a9598524, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
