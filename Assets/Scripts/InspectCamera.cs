@@ -4,9 +4,6 @@ using UnityEngine;
 
 // Brody Soedel 
 // Inspect Camera that controls rotation and views object that is beeing inspected
-
-// TODO: Rotation is bad for some objects that have bad transform axes, must develop better 
-// solution, camera also clips into some objects but not others
 public class InspectCamera : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -18,26 +15,29 @@ public class InspectCamera : MonoBehaviour
     public int rotateSpeed;
     void Start()
     {
-        
+        PauseMenu.Pause?.Invoke();
     }
 
     // Update is called once per frame
     void Update()
     {
         // switches back to player view
-        if (Input.GetKeyDown(KeyCode.F)) {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
             Destroy(_inspectObj);
             Destroy(gameObject);
+            PauseMenu.UnPause?.Invoke();
         }
+
         deltaRotationX = -Input.GetAxis("Mouse X");
         deltaRotationY = Input.GetAxis("Mouse Y");
-        
+
         // spins object based on axis of rotation and change in rotation along camera axes
         if (Input.GetMouseButton(1) && _inspectObjTransform)
         {
             _inspectObjTransform.rotation =
-                Quaternion.AngleAxis(deltaRotationX * rotateSpeed, _inspectObjTransform.up) *
-                Quaternion.AngleAxis(deltaRotationY * rotateSpeed, _inspectObjTransform.right) *
+                Quaternion.AngleAxis(deltaRotationX * rotateSpeed, transform.up) *
+                Quaternion.AngleAxis(deltaRotationY * rotateSpeed, transform.right) *
                 _inspectObjTransform.rotation;
         }
     }
@@ -55,3 +55,5 @@ public class InspectCamera : MonoBehaviour
         return true;
     }
 }
+
+
