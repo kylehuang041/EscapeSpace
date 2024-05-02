@@ -7,6 +7,8 @@ TagManager:
   - Keypad
   - Inspectable
   - SpaceShip
+  - CameraJoint
+  - CameraCone
   layers:
   - Default
   - TransparentFX
