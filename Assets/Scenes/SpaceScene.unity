@@ -6338,7 +6338,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -8557,6 +8557,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1389953284}
   - {fileID: 1757484251}
   - {fileID: 1610025219}
   - {fileID: 544501112}
@@ -8701,7 +8702,6 @@ Transform:
   - {fileID: 1512921981}
   - {fileID: 2133777879}
   - {fileID: 1439147297}
-  - {fileID: 1389953284}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1345981415
