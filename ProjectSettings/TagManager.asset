@@ -9,6 +9,7 @@ TagManager:
   - SpaceShip
   - CameraJoint
   - CameraCone
+  - GoldScore
   layers:
   - Default
   - TransparentFX
