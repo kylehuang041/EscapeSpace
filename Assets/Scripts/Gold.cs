@@ -17,7 +17,6 @@ public class Gold : MonoBehaviour
             goldScoreText = goldScoreObj.GetComponent<TMP_Text>();
             if (goldScoreText != null)
             {
-                Debug.Log("Found GoldScore TextMeshPro component.");
                 goldScoreText.SetText("Gold x " + score);
             }
             else
