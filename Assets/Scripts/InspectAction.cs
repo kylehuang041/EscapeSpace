@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Android;
@@ -24,23 +25,26 @@ public class InspectAction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PauseMenu.IsPaused()) return;
         // launches ray from mouseposition, which upon hitting detectable object launches inspect
         // camera
-        if (PauseMenu.IsPaused()) return;
-        if (Input.GetKeyDown(KeyCode.F))
+        RaycastHit RayHit;
+        if (CameraToMouseRay(Input.mousePosition, out RayHit))
         {
-            RaycastHit RayHit;
-
-            if (CameraToMouseRay(Input.mousePosition, out RayHit))
+            // checks for inspect script
+            if (RayHit.transform.gameObject.GetComponent<Inspect>() != null)
             {
-                if (RayHit.transform.gameObject.tag == "Inspectable")
+                GameObject inspectObject = RayHit.transform.gameObject;
+                if (Input.GetKeyDown(KeyCode.F))
                 {
                     // instantiate object under the scene with directional light
                     // draw camera over current camera
-                    GameObject inspectObject = RayHit.transform.gameObject;
-                    Vector3 size = inspectObject.GetComponent<Renderer>().bounds.size;                    
-                    GameObject inspectClone = Instantiate(inspectObject, new Vector3(1000, 1000, 1000), 
+                    Vector3 size = inspectObject.GetComponent<Renderer>().bounds.size;
+                    Outline outline = inspectObject.GetComponent<Outline>();
+                    outline.enabled = false;
+                    GameObject inspectClone = Instantiate(inspectObject, new Vector3(1000, 1000, 1000),
                         Quaternion.identity);
+                    outline.enabled = true;
                     // insantiate rotation point at center of mesh, not object pivot
                     Vector3 center = inspectClone.GetComponent<Renderer>().bounds.center;
                     GameObject axes = new GameObject("pivot");
@@ -51,12 +55,15 @@ public class InspectAction : MonoBehaviour
                     {
                         Destroy(rb);
                     }
-                    inspectClone.tag = "Untagged";
-                    float cameraDistance = Mathf.Max(size.x, size.y, size.z);
+                    Destroy(inspectClone.GetComponent<Inspect>());
+                    Outline cloneOutline = inspectClone.GetComponent<Outline>();
+                    cloneOutline.enabled = false;
+                    Destroy(inspectClone.GetComponent("OutlineMask"));
+                    Destroy(inspectClone.GetComponent("OutlineFill"));
                     float maxDim = Mathf.Max(size.x, size.y, size.z);
                     // centers object and moves camera far enough back that object doesn't clip through camera
                     //.3f is the distance that the camera begins rendering from the camera object
-                    center.z -= maxDim + .3f; 
+                    center.z -= maxDim + .3f;
                     Camera inspectCam = Instantiate(inspectCamera, center, Quaternion.identity);
                     InspectCamera script = inspectCam.GetComponent<InspectCamera>();
                     script.SetObject(axes);
