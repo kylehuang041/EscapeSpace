@@ -7,18 +7,29 @@ public class StealthMeter : MonoBehaviour
     public float stealthLevel = 100; // Initial and reset stealth level
     private float walkDecayRate = 20.0f; // Decay rate when walking
     private float recoveryRate = 40.0f; // Recovery rate when crouching
+    private float detectRate = 30.0f;
     private bool isMoving = false;
+    private isGameOver = false;
 
     void Update()
     {
-        CheckMovement();
-        UpdateStealthLevel();
-        UpdateStealthDisplay();
+        if (!isGameOver) {
+            CheckMovement();
+            UpdateStealthLevel();
+            UpdateStealthDisplay();
+        }
     }
 
     void CheckMovement()
     {
         isMoving = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D);
+    }
+
+    void DecreaseStealth() {
+        stealthLevel -= detectRate;
+        if (stealthLevel <= 0) {
+            isGameOver = true;
+        }
     }
 
     void UpdateStealthLevel()
