@@ -7,9 +7,14 @@ public class SecurityCameraDetector : MonoBehaviour
     GameObject player;
     StealthMeter stealthMeter;
 
-    void Awake() {
+    void Awake()
+    {
         player = GameObject.FindGameObjectWithTag("Player");
-        stealthMeter = player.GetComponent<stealthMeter>();
+        stealthMeter = player.GetComponent<StealthMeter>(); // Corrected capitalization
+        if (stealthMeter == null)
+        {
+            Debug.LogError("StealthMeter component not found on the player.");
+        }
     }
 
     void OnTriggerEnter(Collider collider)
@@ -17,7 +22,7 @@ public class SecurityCameraDetector : MonoBehaviour
         if (collider.CompareTag("Player"))
         {
             stealthMeter.DecreaseStealth();
-            UnityEngine.Debug.Log("Security Camera has detected a player!");
+            Debug.Log("Security Camera has detected a player!");
         }
     }
 }

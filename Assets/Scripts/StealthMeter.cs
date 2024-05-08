@@ -9,7 +9,7 @@ public class StealthMeter : MonoBehaviour
     private float recoveryRate = 40.0f; // Recovery rate when crouching
     private float detectRate = 30.0f;
     private bool isMoving = false;
-    private isGameOver = false;
+    private bool isGameOver = false;
 
     void Update()
     {
@@ -25,7 +25,7 @@ public class StealthMeter : MonoBehaviour
         isMoving = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D);
     }
 
-    void DecreaseStealth() {
+    public void DecreaseStealth() {
         stealthLevel -= detectRate;
         if (stealthLevel <= 0) {
             isGameOver = true;
