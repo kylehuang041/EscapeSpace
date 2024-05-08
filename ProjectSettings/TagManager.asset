@@ -10,6 +10,7 @@ TagManager:
   - CameraJoint
   - CameraCone
   - GoldScore
+  - StealthMeter
   layers:
   - Default
   - TransparentFX

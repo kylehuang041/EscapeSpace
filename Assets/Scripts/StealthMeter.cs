@@ -5,10 +5,8 @@ public class StealthMeter : MonoBehaviour
 {
     public RectTransform stealthBarFill; // Reference to the fill part of the stealth bar
     public float stealthLevel = 100; // Initial and reset stealth level
-
     private float walkDecayRate = 20.0f; // Decay rate when walking
     private float recoveryRate = 40.0f; // Recovery rate when crouching
-
     private bool isMoving = false;
 
     void Update()
