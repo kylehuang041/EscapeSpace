@@ -20,8 +20,13 @@ public class KeypadScript : MonoBehaviour
     public GameObject button0;
     public GameObject clearButton;
     public GameObject enterButton;
-
+    public Animator doorAnimator;
     // Button OnClick Events
+    public void Start()
+    {
+        doorAnimator.SetBool("character_nearby", false);
+        doorAnimator.SetBool("doorUnlocked", false);
+    }
     public void b1()
     {
         if(passwordScreen.text.Length < password.Length)
@@ -80,7 +85,7 @@ public class KeypadScript : MonoBehaviour
     {
         if(passwordScreen.text.Equals(password))
         {
-            Debug.Log("Approved");
+            doorAnimator.SetBool("doorUnlocked", true);
         }
         else
         {
