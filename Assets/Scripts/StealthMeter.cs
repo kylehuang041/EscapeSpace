@@ -5,22 +5,31 @@ public class StealthMeter : MonoBehaviour
 {
     public RectTransform stealthBarFill; // Reference to the fill part of the stealth bar
     public float stealthLevel = 100; // Initial and reset stealth level
-
     private float walkDecayRate = 20.0f; // Decay rate when walking
     private float recoveryRate = 40.0f; // Recovery rate when crouching
-
+    private float detectRate = 30.0f;
     private bool isMoving = false;
+    private bool isGameOver = false;
 
     void Update()
     {
-        CheckMovement();
-        UpdateStealthLevel();
-        UpdateStealthDisplay();
+        if (!isGameOver) {
+            CheckMovement();
+            UpdateStealthLevel();
+            UpdateStealthDisplay();
+        }
     }
 
     void CheckMovement()
     {
         isMoving = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D);
+    }
+
+    public void DecreaseStealth() {
+        stealthLevel -= detectRate;
+        if (stealthLevel <= 0) {
+            isGameOver = true;
+        }
     }
 
     void UpdateStealthLevel()
@@ -42,12 +51,12 @@ public class StealthMeter : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.LeftControl)) // Crouching
             {
-                stealthLevel = stealthLevel += recoveryRate * Time.deltaTime;
+                stealthLevel += recoveryRate * Time.deltaTime;
                 stealthLevel = Mathf.Min(stealthLevel, 100);
             }
             else // Standing still
             {
-                stealthLevel = stealthLevel += recoveryRate * Time.deltaTime;
+                stealthLevel += recoveryRate * Time.deltaTime;
                 stealthLevel = Mathf.Min(stealthLevel, 90);
             }
         }
