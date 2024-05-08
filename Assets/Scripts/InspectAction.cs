@@ -69,6 +69,15 @@ public class InspectAction : MonoBehaviour
                     script.SetObject(axes);
                 }
             }
+            // pressing E to get gold
+            if (RayHit.transform.gameObject.GetComponent<GoldGrab>() != null)
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    //placeholder
+                    SceneManager.LoadScene("End Screen");
+                }
+            }
         }
     }
 

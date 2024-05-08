@@ -24,9 +24,9 @@ public class InspectCamera : MonoBehaviour
         // switches back to player view
         if (Input.GetKeyDown(KeyCode.F))
         {
+            PauseMenu.UnPause?.Invoke();
             Destroy(_inspectObj);
             Destroy(gameObject);
-            PauseMenu.UnPause?.Invoke();
         }
 
         deltaRotationX = -Input.GetAxis("Mouse X");

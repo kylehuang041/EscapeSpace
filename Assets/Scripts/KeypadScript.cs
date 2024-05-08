@@ -7,6 +7,7 @@ public class KeypadScript : MonoBehaviour
 {
     // Initialize
     public string password;
+    public GameObject keypad;
     public TMP_InputField passwordScreen;
     public GameObject button1;
     public GameObject button2;
@@ -24,8 +25,16 @@ public class KeypadScript : MonoBehaviour
     // Button OnClick Events
     public void Start()
     {
-        doorAnimator.SetBool("character_nearby", false);
+        // doorAnimator.SetBool("character_nearby", false);
         doorAnimator.SetBool("doorUnlocked", false);
+    }
+
+    public void Update()
+    {
+        // if (Input.GetKeyDown(KeyCode.F) && keypad.activeSelf) {
+            // Debug.Log(keypad.activeSelf);
+            // keypad.SetActive(false);
+        // }
     }
     public void b1()
     {

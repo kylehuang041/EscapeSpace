@@ -8,17 +8,15 @@ using UnityEngine;
 // rudimentary pause menu function to pause behavior while inspect occurs
 public class PauseMenu : MonoBehaviour
 {
-
+    public GameObject canvas;
     public delegate void PauseDelegate();
     public static PauseDelegate Pause;
     public static PauseDelegate UnPause;
     
     private static bool isPaused;
-    private bool isActive;
     // Start is called before the first frame update
     void Start()
     {
-        isActive = true;
         isPaused = false;
         Pause = PauseGame;
         UnPause = UnPauseGame;
@@ -27,10 +25,7 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isPaused == isActive)
-        {
-            gameObject.SetActive(!isActive);
-        }
+        canvas.SetActive(!isPaused);
     }
 
     public static bool IsPaused() { return isPaused; }
