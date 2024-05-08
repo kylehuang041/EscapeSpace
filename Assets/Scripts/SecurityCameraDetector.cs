@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerToCameraDetection : MonoBehaviour
+public class SecurityCameraDetector : MonoBehaviour
 {
     void OnTriggerEnter(Collider collider)
     {
-        UnityEngine.Debug.Log("Trigger entered");
-        if (collider.tag == "CameraCone")
+        if (collider.CompareTag("Player"))
         {
             UnityEngine.Debug.Log("Security Camera has detected a player!");
         }

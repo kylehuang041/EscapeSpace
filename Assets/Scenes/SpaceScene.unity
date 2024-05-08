@@ -4790,6 +4790,7 @@ GameObject:
   - component: {fileID: 663160400}
   - component: {fileID: 663160402}
   - component: {fileID: 663160401}
+  - component: {fileID: 663160403}
   m_Layer: 5
   m_Name: GoldScore
   m_TagString: GoldScore
@@ -4915,6 +4916,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 663160399}
   m_CullTransparentMesh: 1
+--- !u!114 &663160403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663160399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fcbc4c61531a244fb8b313e32f16df4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &674208947
 PrefabInstance:
   m_ObjectHideFlags: 0
