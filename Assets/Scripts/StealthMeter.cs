@@ -51,12 +51,12 @@ public class StealthMeter : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.LeftControl)) // Crouching
             {
-                stealthLevel = stealthLevel += recoveryRate * Time.deltaTime;
+                stealthLevel += recoveryRate * Time.deltaTime;
                 stealthLevel = Mathf.Min(stealthLevel, 100);
             }
             else // Standing still
             {
-                stealthLevel = stealthLevel += recoveryRate * Time.deltaTime;
+                stealthLevel += recoveryRate * Time.deltaTime;
                 stealthLevel = Mathf.Min(stealthLevel, 90);
             }
         }
