@@ -1,0 +1,5 @@
+To make an object inspectable, do the following:
+
+--Add the Inspect script component to the object you want to inspect
+
+--Ensure the object has a box or other collider 
