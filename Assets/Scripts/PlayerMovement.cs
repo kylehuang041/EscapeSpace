@@ -1,8 +1,9 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 5.0f;
+    public float speed = 4.0f;
     public float jumpForce = 5.0f; // Adjust this value as needed
     public float sensitivity = 1.0f;
     private float horizontalInput;
@@ -15,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     public float crouchHeight = 0.5f;
     private float defaultHeight = 0.0f;
     private float crouchSpeed = 2.5f;
+
+    Vector3 moveDirection;
 
     void Start()
     {
@@ -46,14 +49,14 @@ public class PlayerMovement : MonoBehaviour
             float currentSpeed = Input.GetKey(KeyCode.LeftControl) ? crouchSpeed : speed;
 
             // Move the player forward/backward
-            transform.Translate(Vector3.forward * Time.deltaTime * currentSpeed * forwardInput);
-            transform.Translate(Vector3.right * Time.deltaTime * speed * horizontalInput);
+            //transform.Translate(Vector3.forward * Time.deltaTime * currentSpeed * forwardInput);
+            //transform.Translate(Vector3.right * Time.deltaTime * speed * horizontalInput);
 
             // Jump
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                Jump();
-            }
+            //if (Input.GetKeyDown(KeyCode.Space))
+            //{
+            //    Jump();
+            //}
 
             // Rotate the player based on mouse input for yaw (left/right)
             yawX += sensitivity * Input.GetAxis("Mouse X");
@@ -71,7 +74,11 @@ public class PlayerMovement : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
         }
     }
-
+    private void FixedUpdate()
+    {
+        moveDirection = transform.forward * forwardInput + transform.right * horizontalInput;
+        rb.AddForce(10f * speed * moveDirection.normalized, ForceMode.Force);
+    }
     void Jump()
     {
         // Check if the player is grounded before jumping
