@@ -4,5 +4,12 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/SpaceScene.unity
+    guid: e8cf1d29775c7e24f9dd35148a6437c0
+  - enabled: 1
+    path: Assets/Scenes/End Screen.unity
+    guid: 4382bfd5eaba1344dbde356281b28b8c
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0
