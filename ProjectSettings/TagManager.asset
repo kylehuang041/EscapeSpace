@@ -11,7 +11,7 @@ TagManager:
   - CameraCone
   - GoldScore
   - StealthMeter
-  - ground
+  - door
   layers:
   - Default
   - TransparentFX
