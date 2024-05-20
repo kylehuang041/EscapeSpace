@@ -47,5 +47,6 @@ public class Movement : MonoBehaviour
     {
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
         rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+        transform.rotation = orientation.rotation;
     }
 }
