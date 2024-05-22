@@ -12,6 +12,8 @@ TagManager:
   - GoldScore
   - StealthMeter
   - door
+  - ground
+  - doorFrame1
   layers:
   - Default
   - TransparentFX

@@ -12,7 +12,7 @@ public class Movement : MonoBehaviour
 
     float horizontalInput;
     float verticalInput;
-    private bool cursorLocked = true;
+    private bool cursorLocked;
     private bool isRunning = false;
 
     Vector3 moveDirection;
@@ -21,7 +21,7 @@ public class Movement : MonoBehaviour
 
     void Awake()
     {
-        speedBoost = moveSpeed * 1.5f;
+        speedBoost = moveSpeed * 1.25f;
     }
 
     // Update is called once per frame
@@ -29,6 +29,8 @@ public class Movement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+        cursorLocked = true;
+        Cursor.lockState = cursorLocked ? CursorLockMode.Locked : CursorLockMode.None;
     }
 
     private void Update()
