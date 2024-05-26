@@ -38,7 +38,7 @@ public class Movement : MonoBehaviour
         if (PauseMenu.IsPaused()) return;
 
         // Toggle cursor lock/unlock with the Escape key
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             cursorLocked = !cursorLocked;
             Cursor.lockState = cursorLocked ? CursorLockMode.Locked : CursorLockMode.None;
