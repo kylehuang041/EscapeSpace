@@ -48,7 +48,6 @@ public class PlayerCam : MonoBehaviour
         if (Physics.Raycast(ray, out hit, maxDistance))
         {
             GameObject door = hit.collider.gameObject;
-            UnityEngine.Debug.Log(door.name);
             if (door.name.Contains("glass_panel_1_door"))
             {
                 DoorAnimation doorAnimation = door.GetComponentInParent<DoorAnimation>();
@@ -60,9 +59,6 @@ public class PlayerCam : MonoBehaviour
                 {
                     Debug.Log("DoorAnimation component not found on " + door.name);
                 }
-            } else if (door.name.Contains("glass_panel_1_with_door")) {
-                DoorAnimation doorAnimation = door.GetComponent<DoorAnimation>();
-                doorAnimation.ToggleDoor();
             }
         }
     }
